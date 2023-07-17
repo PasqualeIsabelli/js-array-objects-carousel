@@ -99,8 +99,6 @@ nextBtn.addEventListener("click", function () {
   }
   // Aggiungo la classe active
   imageContainerCarouselElements[currentImageIndex].classList.add("active");
-
-  console.log(imageContainerCarouselElements[currentImageIndex]);
 });
 
 // SCATENO EVENTO: al click del button prev le immagini scorrono indietro
@@ -118,3 +116,16 @@ prevBtn.addEventListener("click", function () {
   // Aggiungo la classe active
   imageContainerCarouselElements[currentImageIndex].classList.add("active");
 });
+
+// BONUS 2
+// TIMING FUNCTION: Creo una funzione interval per l'autoplay
+const autoPlay = setInterval(function () {
+  // Copio ed incollo il contenuto dell' eventlistener
+  const imageContainerCarouselElements = document.querySelectorAll(".image-container-carousel");
+  imageContainerCarouselElements[currentImageIndex].classList.remove("active");
+  currentImageIndex++;
+  if (currentImageIndex > imageContainerCarouselElements.length - 1) {
+    currentImageIndex = 0;
+  }
+  imageContainerCarouselElements[currentImageIndex].classList.add("active");
+}, 3000);
